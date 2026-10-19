@@ -22,19 +22,19 @@ configurations {
 }
 
 dependencies {
-    modImplementation "net.fabricmc:fabric-loader:$rootProject.fabric_loader_version"
-    modImplementation "net.fabricmc.fabric-api:fabric-api:$rootProject.fabric_api_version"
+    implementation "net.fabricmc:fabric-loader:$rootProject.fabric_loader_version"
+    implementation "net.fabricmc.fabric-api:fabric-api:$rootProject.fabric_api_version"
     compileOnly "io.github.llamalad7:mixinextras-fabric:0.5.5"
-    modImplementation "dev.architectury:architectury-fabric:$rootProject.architectury_api_version"
+    implementation "dev.architectury:architectury-fabric:$rootProject.architectury_api_version"
     implementation "com.neovisionaries:nv-websocket-client:$rootProject.nv_websocket_version"
-    modApi(include("fuzs.forgeconfigapiport:forgeconfigapiport-fabric:$rootProject.fcap_version"))
-    modImplementation("me.shedaniel.cloth:cloth-config-fabric:$rootProject.cloth_config_version") {
+    implementation(include("fuzs.forgeconfigapiport:forgeconfigapiport-fabric:$rootProject.fcap_version"))
+    implementation("me.shedaniel.cloth:cloth-config-fabric:$rootProject.cloth_config_version") {
         exclude(group: "net.fabricmc.fabric-api")
     }
-    modImplementation "com.terraformersmc:modmenu:$rootProject.modmenu_version"
-    modImplementation "eu.pb4.fork:trinkets:$rootProject.trinkets_version"
-    modImplementation "org.ladysnake.cardinal-components-api:cardinal-components-base:$rootProject.cca_version"
-    modImplementation "org.ladysnake.cardinal-components-api:cardinal-components-entity:$rootProject.cca_version"
+    implementation "com.terraformersmc:modmenu:$rootProject.modmenu_version"
+    implementation "eu.pb4.fork:trinkets:$rootProject.trinkets_version"
+    implementation "org.ladysnake.cardinal-components-api:cardinal-components-base:$rootProject.cca_version"
+    implementation "org.ladysnake.cardinal-components-api:cardinal-components-entity:$rootProject.cca_version"
     common(project(path: ':common', configuration: 'namedElements')) { transitive = false }
     shadowBundle project(path: ':common', configuration: 'transformProductionFabric')
 }
