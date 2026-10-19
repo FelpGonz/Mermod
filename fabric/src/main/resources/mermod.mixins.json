@@ -7,9 +7,7 @@
   "mixins": [
     "PlayerMixin"
   ],
-  "client": [
-    "AvatarMixin"
-  ],
+  "client": [],
   "injectors": {
     "defaultRequire": 1
   }
