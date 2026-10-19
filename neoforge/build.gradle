@@ -35,6 +35,14 @@ dependencies {
     implementation project(':common')
 }
 
+// The common module contains Mermod's actual item, recipe, rendering,
+// configuration and mixin classes. Gradle's project dependency makes those
+// available at compile/runtime but does not put them inside the distributable
+// mod JAR, so include the common output in the final NeoForge JAR.
+tasks.named('jar', Jar).configure {
+    from project(':common').sourceSets.main.output
+}
+
 processResources {
     var replaceProperties = [
             mod_id: mod_id,
