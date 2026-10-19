@@ -6,7 +6,6 @@ import io.github.thatpreston.mermod.MermodClient;
 import io.github.thatpreston.mermod.client.render.MermodRenderTypes;
 import io.github.thatpreston.mermod.client.render.TailRenderLayer;
 import io.github.thatpreston.mermod.compat.MermodClothConfigScreen;
-import net.irisshaders.iris.pipeline.IrisPipelines;
 import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.client.renderer.entity.player.AvatarRenderer;
 import net.minecraft.world.entity.player.PlayerModelType;
@@ -24,10 +23,6 @@ public class MermodNeoForgeClient {
         MermodClient.init();
         eventBus.addListener(this::addLayers);
         eventBus.addListener(this::registerRenderPipelines);
-        if(MermodClient.irisLoaded) {
-            IrisPipelines.copyPipeline(RenderPipelines.ARMOR_TRANSLUCENT, MermodRenderTypes.ARMOR_TRANSLUCENT_CULL_PIPELINE);
-            IrisPipelines.copyPipeline(RenderPipelines.GLINT, MermodRenderTypes.GLINT_CULL_PIPELINE);
-        }
         if(Platform.isModLoaded("cloth_config")) {
             modContainer.registerExtensionPoint(IConfigScreenFactory.class, (container, parent) -> MermodClothConfigScreen.build(parent));
         }
