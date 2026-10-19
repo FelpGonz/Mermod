@@ -3,6 +3,8 @@ name: Build 26.3
 on:
   push:
     branches: ["26.3"]
+  pull_request:
+    branches: ["1.21.11"]
   workflow_dispatch:
 
 jobs:
