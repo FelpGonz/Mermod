@@ -32,8 +32,7 @@ dependencies {
     implementation "org.anarres:jcpp:1.4.14"
     implementation "io.github.douira:glsl-transformer:3.0.0-pre3"
     implementation "org.antlr:antlr4-runtime:4.13.1"
-    common(project(path: ':common', configuration: 'namedElements')) { transitive = false }
-    shadowBundle project(path: ':common', configuration: 'transformProductionNeoForge')
+    implementation project(':common')
 }
 
 processResources {
