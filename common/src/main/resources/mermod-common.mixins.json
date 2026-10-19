@@ -9,7 +9,6 @@
   "client": [
     "AvatarRendererMixin",
     "AvatarRenderStateMixin",
-    "GameRendererMixin",
     "HumanoidArmorLayerMixin",
     "HumanoidModelMixin",
     "ModelPartAccessor",
