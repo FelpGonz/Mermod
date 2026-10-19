@@ -1,24 +1,9 @@
 package io.github.thatpreston.mermod.item.modifier;
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.tags.Tags;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.component.DyedItemColor;
-import java.util.Map;
+import com.mojang.serialization.Codec;import io.netty.buffer.ByteBuf;import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;import net.minecraft.core.component.DataComponents;import net.minecraft.network.codec.*;import net.minecraft.world.item.ItemStack;import net.minecraft.world.item.component.DyedItemColor;import java.util.Map;
 public record NecklaceModifiers(Map<String,NecklaceModifier> modifiers){
- public static final NecklaceModifiers EMPTY=new NecklaceModifiers(Map.of());
- public static final Codec<NecklaceModifiers> CODEC;
- private static final StreamCodec<ByteBuf,Map<String,NecklaceModifier>> MODIFIERS_STREAM_CODEC;
- public static final StreamCodec<ByteBuf,NecklaceModifiers> STREAM_CODEC;
- public NecklaceModifiers copy(){return new NecklaceModifiers(new Object2ObjectOpenHashMap<>(modifiers));}
- public void add(String t,NecklaceModifier m){modifiers.put(t,m);}
- public ItemStack remove(NecklaceModifierItem i){NecklaceModifier m=modifiers.remove(i.getType());if(m!=null){ItemStack s=i.getDefaultInstance();if(s.is(Tags.Items.DYEABLE)&&m.color()!=16777215)s.set(DataComponents.DYED_COLOR,new DyedItemColor(m.color()));return s;}return ItemStack.EMPTY;}
- public boolean canRemove(NecklaceModifierItem i){NecklaceModifier m=modifiers.get(i.getType());return m!=null&&m.is(i.getModifier());}
- public NecklaceModifier get(String t){return modifiers.get(t);}
- public boolean contains(String t){return modifiers.containsKey(t);}
+ public static final NecklaceModifiers EMPTY=new NecklaceModifiers(Map.of());public static final Codec<NecklaceModifiers> CODEC;private static final StreamCodec<ByteBuf,Map<String,NecklaceModifier>> MODIFIERS_STREAM_CODEC;public static final StreamCodec<ByteBuf,NecklaceModifiers> STREAM_CODEC;
+ public NecklaceModifiers copy(){return new NecklaceModifiers(new Object2ObjectOpenHashMap<>(modifiers));}public void add(String t,NecklaceModifier m){modifiers.put(t,m);}
+ public ItemStack remove(NecklaceModifierItem i){NecklaceModifier m=modifiers.remove(i.getType());if(m!=null){ItemStack s=i.getDefaultInstance();if(m.color()!=16777215)s.set(DataComponents.DYED_COLOR,new DyedItemColor(m.color()));return s;}return ItemStack.EMPTY;}
+ public boolean canRemove(NecklaceModifierItem i){NecklaceModifier m=modifiers.get(i.getType());return m!=null&&m.is(i.getModifier());}public NecklaceModifier get(String t){return modifiers.get(t);}public boolean contains(String t){return modifiers.containsKey(t);}
  static{CODEC=Codec.unboundedMap(Codec.STRING,NecklaceModifier.CODEC).xmap(NecklaceModifiers::new,NecklaceModifiers::modifiers);MODIFIERS_STREAM_CODEC=ByteBufCodecs.map(Object2ObjectOpenHashMap::new,ByteBufCodecs.STRING_UTF8,NecklaceModifier.STREAM_CODEC);STREAM_CODEC=MODIFIERS_STREAM_CODEC.map(NecklaceModifiers::new,NecklaceModifiers::modifiers);}
 }
