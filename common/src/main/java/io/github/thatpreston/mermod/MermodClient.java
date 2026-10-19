@@ -4,7 +4,6 @@ import dev.architectury.platform.Platform;
 import dev.architectury.registry.client.level.entity.EntityModelLayerRegistry;
 import io.github.thatpreston.mermod.client.render.TailStyle;
 import io.github.thatpreston.mermod.client.render.model.TailLayerDefinitions;
-import io.github.thatpreston.mermod.compat.MermodFiguraAPI;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.player.Player;
@@ -45,7 +44,7 @@ public class MermodClient {
     }
     public static boolean shouldTryRenderingTail(Player player) {
         if(!player.isInvisible()) {
-            return !figuraLoaded || MermodFiguraAPI.isTailVisible(player.getUUID());
+            return true;
         }
         return false;
     }
