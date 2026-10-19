@@ -2,14 +2,12 @@
   "required": true,
   "package": "io.github.thatpreston.mermod.fabric.mixin",
   "plugin": "io.github.thatpreston.mermod.fabric.mixin.FabricMixinConfigPlugin",
-  "compatibilityLevel": "JAVA_21",
+  "compatibilityLevel": "JAVA_25",
   "minVersion": "0.8",
   "mixins": [
     "PlayerMixin"
   ],
-  "client": [
-    "AvatarMixin"
-  ],
+  "client": [],
   "injectors": {
     "defaultRequire": 1
   }
