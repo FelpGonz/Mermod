@@ -35,8 +35,7 @@ dependencies {
     implementation "eu.pb4:trinkets:$rootProject.trinkets_version"
     implementation "org.ladysnake.cardinal-components-api:cardinal-components-base:$rootProject.cca_version"
     implementation "org.ladysnake.cardinal-components-api:cardinal-components-entity:$rootProject.cca_version"
-    common(project(path: ':common', configuration: 'namedElements')) { transitive = false }
-    shadowBundle project(path: ':common', configuration: 'transformProductionFabric')
+    implementation project(':common')
 }
 
 processResources {
