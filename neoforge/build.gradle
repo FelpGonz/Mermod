@@ -40,7 +40,10 @@ dependencies {
 // available at compile/runtime but does not put them inside the distributable
 // mod JAR, so include the common output in the final NeoForge JAR.
 tasks.named('jar', Jar).configure {
-    from project(':common').sourceSets.main.output
+    from(project(':common').sourceSets.main.output) {
+        // NeoForge discovers mixin configs from neoforge.mods.toml. Keeping the
+        // common config at the JAR root is required for startup.
+    }
 }
 
 processResources {
