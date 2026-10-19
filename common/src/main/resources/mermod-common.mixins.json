@@ -10,7 +10,6 @@
     "AvatarRendererMixin",
     "AvatarRenderStateMixin",
     "HumanoidArmorLayerMixin",
-    "HumanoidModelMixin",
     "ModelPartAccessor",
     "PlayerModelMixin"
   ],
