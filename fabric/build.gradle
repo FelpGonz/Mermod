@@ -24,6 +24,7 @@ configurations {
 dependencies {
     modImplementation "net.fabricmc:fabric-loader:$rootProject.fabric_loader_version"
     modImplementation "net.fabricmc.fabric-api:fabric-api:$rootProject.fabric_api_version"
+    compileOnly "io.github.llamalad7:mixinextras-fabric:0.5.5"
     modImplementation "dev.architectury:architectury-fabric:$rootProject.architectury_api_version"
     implementation "com.neovisionaries:nv-websocket-client:$rootProject.nv_websocket_version"
     modApi(include("fuzs.forgeconfigapiport:forgeconfigapiport-fabric:$rootProject.fcap_version"))
