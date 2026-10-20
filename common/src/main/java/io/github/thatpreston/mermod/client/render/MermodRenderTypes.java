@@ -5,5 +5,5 @@ import net.minecraft.resources.Identifier;
 public final class MermodRenderTypes{
  private MermodRenderTypes(){}
  public static RenderType armorTranslucentCull(Identifier id){return RenderTypes.entityTranslucentCull(id);}
- public static RenderType armorEntityGlintCull(){return RenderTypes.entityTranslucentCull(Identifier.fromNamespaceAndPath("minecraft","textures/misc/enchanted_glint_entity.png"));}
+ public static RenderType armorEntityGlintCull(){return RenderTypes.entityGlint();}
 }
