@@ -14,6 +14,6 @@ public class Mermod {
  public static void init(){RegistryHandler.register();}
  public static void registerCauldronInteractions(){}
  public static ItemStack getNecklaceFromAccessorySlot(Player p){return MermodPlatform.getNecklaceFromAccessorySlot(p);}
- public static ItemStack getNecklace(Player p){ItemStack s=getNecklaceFromAccessorySlot(p);if(!s.isEmpty())return s;s=p.getItemBySlot(EquipmentSlot.CHEST);return s.is(RegistryHandler.SEA_NECKLACE_TAG)?s:ItemStack.EMPTY;}
+ public static ItemStack getNecklace(Player p){ItemStack s=getNecklaceFromAccessorySlot(p);if(!s.isEmpty())return s;s=p.getItemBySlot(EquipmentSlot.CHEST);return s.is(RegistryHandler.SEA_NECKLACE.get())?s:ItemStack.EMPTY;}
  public static void addEffects(LivingEntity e){if(e.isInWater()&&e instanceof ServerPlayer p){if(MermodConfig.isWaterBreathingEnabled())p.addEffect(new MobEffectInstance(MobEffects.WATER_BREATHING,250,0,true,false));if(MermodConfig.isNightVisionEnabled())p.addEffect(new MobEffectInstance(MobEffects.NIGHT_VISION,250,0,true,false));}}
 }
