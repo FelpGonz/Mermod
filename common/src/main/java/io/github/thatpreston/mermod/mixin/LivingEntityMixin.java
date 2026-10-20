@@ -11,11 +11,11 @@ import org.spongepowered.asm.mixin.injection.ModifyArg;
 @Mixin(LivingEntity.class)
 public abstract class LivingEntityMixin {
     @ModifyArg(method = "travelInWater(Lnet/minecraft/world/phys/Vec3;DZD)V", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/LivingEntity;moveRelative(FLnet/minecraft/world/phys/Vec3;)V", ordinal = 0))
-    private float modifyFloat(float original) {
-        if((Object)this instanceof Player player) {
-            if(!Mermod.getNecklace(player).isEmpty()) {
-                return original * (float)MermodConfig.getSwimSpeedMultiplier();
-            }
+    private float modifySwimAcceleration(float original) {
+        if ((Object)this instanceof Player player && !Mermod.getNecklace(player).isEmpty()) {
+            // 26.3 applies additional water drag after moveRelative. A stronger
+            // acceleration multiplier restores the fast mermaid swimming feel.
+            return original * (float)(MermodConfig.getSwimSpeedMultiplier() * 2.0D);
         }
         return original;
     }
